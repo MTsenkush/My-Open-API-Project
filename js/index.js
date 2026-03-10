@@ -15,7 +15,7 @@ async function getRandomCharacter() {
     button.innerHTML = "Scanning the Galaxy";
 
     //let's make them wait
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
     //who of 82 heroes will show us today?
     const randomId = Math.floor(Math.random()*82) + 1;
@@ -47,10 +47,21 @@ async function getRandomCharacter() {
       });
 
     // 🎵 YOUTUBE
+
+    // Choice of themes to be added...
+
+    const Videos = [
+    {title: "Star Wars Main Theme / Main Title",
+    url: "https://www.youtube.com/embed/vZ734NWnAHA"},
+    ];
+
+
+    const randomVideo = Videos[Math.floor(Math.random()*Videos.length)];
+
     youtubeCard.innerHTML = 
-      `<h3>Theme</h3>
-      <iframe width="100%" height="200"
-        src="https://www.youtube.com/embed/vZ734NWnAHA"
+      `<h3>${randomVideo.title}</h3>
+      <iframe width="100%" height="315"
+        src="${randomVideo.url}"
         frameborder="0"
         allowfullscreen>
       </iframe>`
@@ -62,7 +73,16 @@ async function getRandomCharacter() {
 }
 
 
-          
+const today = new Date();
+const thisYear = today.getFullYear();
+
+const footer = document.querySelector("footer");
+
+const copyright = document.createElement("p");
+
+copyright.innerText = `© Mariia Tsenkush ${thisYear}`;
+
+footer.appendChild(copyright);          
 
 
 
